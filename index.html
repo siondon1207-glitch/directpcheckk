@@ -1,23 +1,794 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
+
+
+    <!-- JSON-LD Structured Data for Search Engine Optimization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "2026년 글로벌 스포츠카 가격 및 유지비 비교 분석",
+        "image": "https://images.pexels.com/photos/3752194/pexels-photo-3752194.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "description": "포르쉐 911, 718 박스터, 머스탱, 카마로 등 국내외 주요 스포츠카 30종의 가격, 취등록세, 예상 유지 비용을 계산하고 다이렉트 컨설팅을 제공하는 전문 금융 비교 분석 플랫폼입니다.",
+        "brand": {
+            "@type": "Brand",
+            "name": "스포츠카 전문 통합 금융 솔루션"
+        },
+        "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "KRW",
+            "lowPrice": "30000000",
+            "highPrice": "500000000",
+            "offerCount": "30"
+        }
+    }
+    </script>
+
+    <!-- Preconnect & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS Styles with Premium Visual Hierarchy -->
+    <style>
+        :root {
+            --primary-color: #1e293b; /* Deep Slate Blue */
+            --secondary-color: #3b82f6; /* Premium Cobalt Blue */
+            --accent-color: #ea580c; /* Terracotta Orange Accent */
+            --text-color: #334155;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --border-color: #cbd5e1;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.8;
+            letter-spacing: -0.02em;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav a {
+            color: var(--white);
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: var(--white);
+            border-radius: 16px;
+            padding: 4rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-banner h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1.25;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-accent {
+            color: var(--secondary-color);
+        }
+
+        /* Interactive Grid Layout */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Content Styling */
+        article {
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2.5rem;
+        }
+
+        article h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 0.75rem;
+        }
+
+        article h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        article h4 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        article p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background-color: #f1f5f9;
+            border-left: 6px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 4px 8px 8px 4px;
+            margin: 2rem 0;
+        }
+
+        /* Interactive Dynamic Calculator */
+        .calculator-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .calculator-card h3 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--light-bg);
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        .calc-result-area {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .calc-result-area div {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+
+        .calc-result-area .total-price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--white);
+            margin-top: 0.5rem;
+        }
+
+        /* Side Sticky Form for High Dwell Time and Conversions */
+        .sticky-sidebar {
+            position: sticky;
+            top: 6.5rem;
+            height: fit-content;
+        }
+
+        .consulting-form {
+            background-color: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .consulting-form h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .consulting-form p {
+            font-size: 0.85rem;
+            color: #64748b;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .btn-submit:hover {
+            background-color: #c2410c;
+        }
+
+        /* Standard Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-sm);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: 700;
+            text-align: left;
+            padding: 1rem;
+        }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--white);
+        }
+
+        tr:nth-child(even) td {
+            background-color: var(--light-bg);
+        }
+
+        /* Graphical Representation Styles (Custom Pure CSS Chart) */
+        .chart-container {
+            background-color: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .chart-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        .chart-bar-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 150px 1fr 100px;
+            align-items: center;
+        }
+
+        .chart-label {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .chart-bar-wrapper {
+            background-color: #e2e8f0;
+            border-radius: 9999px;
+            height: 16px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 100%;
+            background-color: var(--secondary-color);
+            border-radius: 9999px;
+            transition: width 1s ease-in-out;
+        }
+
+        .chart-bar.porsche { width: 85%; background-color: var(--accent-color); }
+        .chart-bar.bmw { width: 60%; }
+        .chart-bar.mustang { width: 45%; }
+        .chart-bar.avante { width: 25%; }
+
+        .chart-value {
+            text-align: right;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* External Links Styling */
+        .external-links {
+            margin-top: 3rem;
+            background-color: #f1f5f9;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .external-links h3 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .external-links ul {
+            padding-left: 1.2rem;
+            margin: 0;
+        }
+
+        .external-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .external-links a {
+            color: var(--secondary-color);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .external-links a:hover {
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: #94a3b8;
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.85rem;
+            border-top: 4px solid var(--secondary-color);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="#">스포츠카<span>가격비교</span></a>
+            </div>
+            <nav>
+                <a href="#intro">시장 동향</a>
+                <a href="#comparison">모델별 비교</a>
+                <a href="#calculator">견적 계산기</a>
+                <a href="#consulting">컨설팅 신청</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-banner">
+            <h1>고성능 고품격 스포츠카 가격 비교<br><span class="hero-accent">합리적인 2026 구매 전략</span></h1>
+            <p>
+                2026년 기준 스포츠카 시장의 최신 실거래 데이터를 기반으로 구성한 종합 가이드입니다. 
+                차량 가액 산출부터 유지 세금, 브랜드별 등급 차이, 할부 리스 견적 설계까지 전반적인 지식을 일목요연하게 전달합니다.
+            </p>
+        </section>
+
+        <!-- Main Grid Layout -->
+        <div class="grid-layout">
+            
+            <!-- Left Side: Informational Content Area -->
+            <div class="content-area">
+                
+                <!-- Section 1 -->
+                <article id="intro">
+                    <h2>스포츠카 가격 형성 요인과 2026년 시장 동향</h2>
+                    <p>
+                        스포츠카 가격은 일반 양산형 세단이나 SUV와 완전히 차별화된 기준에 의해 산정됩니다. 엔진의 기통수, 터보차저 탑재 유무, 공기역학 설계의 복잡성, 탄소섬유 복합소재 적용 비율 등이 제조 원가와 출고 가격을 결정하는 핵심 변수입니다. 2026년 스포츠카 시장은 내연기관 고유의 감성을 계승하는 고성능 내연 스포츠카와 미래지향적인 완전 전동화 하이퍼카가 혼재하는 대전환기를 맞이하고 있습니다.
+                    </p>
+                    <p>
+                        일반적으로 소비자가 인지하는 스포츠카 요금 범주는 크게 엔트리급, 미드레인지급, 하이엔드 슈퍼카급으로 나뉩니다. 가격대별 편차는 수천만 원에서 수억 원 이상까지 광범위하게 벌어지기 때문에 가벼운 호기심만으로 접근하기에는 초기 자본 조달 방식이나 유지관리 상 발생하는 세무 지출의 장벽이 매우 높은 편입니다. 차량을 다이렉트로 현금 선납하여 계약할 때와 비교하여 리스나 렌트 요금제를 적용하는 경우 발생할 수 있는 이자율 차이점도 중요한 검토 대상입니다.
+                    </p>
+                    
+                    <div class="highlight-box">
+                        <strong>전문가의 분석 의견:</strong> 스포츠카 선택 시 외관의 아름다움보다 더 중요한 것은 예상 감가상각비와 유지 비용의 총합입니다. 특히 고성능 고가 차량일수록 초기 인수 비용 외에도 연도별 누적 차량 감가, 소모품 보증 연장 비용, 타이어 교체 요금 등이 예산을 압도하는 경우가 허다합니다.
+                    </div>
+                    
+                    <p>
+                        온라인 기반의 인터넷 정보 검색 플랫폼이나 보배드림, 디시, 펨코, 에펨코리아 같은 커뮤니티 성지 정보를 분석해 보면, 신규 차량 인수 이후 가장 큰 후회를 겪는 부분이 바로 보증 기간 종료 후의 유지비 격차입니다. 이를 미연에 예방하기 위해서는 다이렉트 자차 견적 시뮬레이션 및 잔존 가치 계산 어플이나 모바일 앱 도구를 사전에 충분히 가동하여 월 납입 금액과 보증 연장 요율을 꼼꼼하게 따져보아야 합니다.
+                    </p>
+                </article>
+
+                <!-- Section 2: Model specific 30 models -->
+                <article id="comparison">
+                    <h2>국내외 주요 스포츠카 30개 차종 가격대 분류</h2>
+                    <p>
+                        국내 시장에서 정식 판매 중이거나 직수입 경로를 통해 유통되는 핵심 고성능 모델 30종의 라인업을 세부 유형별로 분류했습니다. 각 브랜드의 상징적인 차종마다 고유의 설계 특성과 함께 공식 딜러 프로모션 혜택, 잔존가치 기준 요율이 완연하게 다릅니다.
+                    </p>
+                    
+                    <h3>엔트리 및 주행 성능 특화 데일리 스포츠카 라인업</h3>
+                    <p>
+                        비교적 현실적인 예산 범위 내에서 주행 본연의 즐거움을 극대화할 수 있는 경량 스포츠카 군단입니다. <strong>현대 아반떼 N</strong>은 국산 고성능의 자존심으로 가장 대중적인 싼곳으로 통하며 뛰어난 가성비를 과시합니다. <strong>기아 스팅어</strong> 및 <strong>제네시스 G70</strong>은 넉넉한 공간을 제공하는 스포츠 패키지 세단으로 중고 시장과 성지 매물 거래가 활발합니다. 
+                    </p>
+                    <p>
+                        입문형 오픈 에어링의 상징인 <strong>마즈다 MX-5</strong>, 펀 드라이빙의 절대 강자 <strong>도요타 GR86</strong>, 경량 스포츠카의 바이블로 평가받는 <strong>로터스 에미라</strong>는 기민한 코너링 성능을 보여줍니다. 과거 국산 스포츠카의 시초였던 <strong>제네시스 쿠페</strong>는 튜닝 씬에서 여전히 거래되며, <strong>도요타 수프라</strong>는 직렬 6기통 엔진의 질감으로 매니아층의 지지를 받습니다.
+                    </p>
+
+                    <h3>미드레인지급 프리미엄 및 머슬카 군단</h3>
+                    <p>
+                        압도적인 존재감과 강한 직진 가속력을 자랑하는 미국식 정통 머슬카와 독일계 고정밀 스포츠 드라이빙 머신들이 대거 포진한 세그먼트입니다. 아메리칸 머슬의 자존심인 <strong>포드 머스탱</strong> 및 출력을 극한으로 끌어올린 <strong>포드 머스탱 다크호스</strong> 에디션은 웅장한 배기음으로 큰 호응을 이끌어냅니다. <strong>쉐보레 카마로</strong>와 미드십 구조로 거듭나 가성비 슈퍼카로 불리는 <strong>쉐보레 콜벳 스팅레이</strong> 및 고성능 트림 <strong>쉐보레 콜벳</strong>은 서킷 지향적 성향이 강합니다.
+                    </p>
+                    <p>
+                        동급 표준이자 정교함의 극치를 달리는 <strong>포르쉐 718 박스터</strong>와 고성능 스포츠 쿠페의 절대 강자 <strong>BMW M4</strong>, 미래지향적 감각을 제공하는 <strong>아우디 e-트론 GT</strong>는 브랜드 신뢰도가 단단합니다. 고성능 럭셔리 GT의 정수를 표현하는 <strong>렉서스 LC500</strong> 또한 장기 보유 시 내구성 측면에서 압도적인 장점을 가집니다.
+                    </p>
+
+                    <h3>플래그십 및 하이퍼 슈퍼카 레벨</h3>
+                    <p>
+                        일반적인 접근성을 아득히 뛰어넘어 기술력과 부의 상징으로 자리 잡은 최정상급 하이엔드 차종들입니다. 누구나 꿈꾸는 드림카인 <strong>포르쉐 911</strong>과 완전한 전기 고성능 세단의 대명사 <strong>포르쉐 타이칸</strong>은 최고의 인지도를 누리고 있습니다. 하이 퍼포먼스를 내세운 <strong>메르세데스-벤츠 AMG GT</strong>, 경량 패키지의 극강을 보여주는 <strong>맥라렌 GT</strong>, 수려한 이탈리안 디자인을 적용한 <strong>페라리 로마</strong> 및 하이브리드 고출력 엔진을 얹은 <strong>페라리 296 GTB</strong>는 상징성이 대단합니다.
+                    </p>
+                    <p>
+                        자연흡기 엔진의 마지막을 장식했던 <strong>아우디 R8</strong>, 강력한 혼다의 기술력을 녹여낸 하이브리드 머신 <strong>혼다 NSX</strong>, 야수 같은 성능과 존재감을 발산하는 <strong>람보르기니 우라칸</strong> 및 차세대 플러그인 하이브리드 하이퍼카인 <strong>람보르기니 레부엘토</strong>는 수억 원대를 호가합니다. 더불어 브리티시 젠틀맨 스포티즘을 표현하는 <strong>애스턴마틴 DB12</strong>, 고유의 트라이던트 로고와 미드십 레이아웃을 갖춘 <strong>마세라티 MC20</strong>, 괴물 같은 하체 제어 성능으로 수많은 유튜브 및 인스타그램 채널에서 리뷰가 쏟아지는 <strong>닛산 GT-R</strong>까지 고도의 완성도를 갖추고 있습니다.
+                    </p>
+
+                    <div class="chart-container">
+                        <div class="chart-title">브랜드 등급별 신차 시작가 지표 (2026년 기준)</div>
+                        <div class="chart-bar-group">
+                            <div class="chart-row">
+                                <span class="chart-label">포르쉐 911</span>
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-bar porsche"></div>
+                                </div>
+                                <span class="chart-value">약 1.8억~</span>
+                            </div>
+                            <div class="chart-row">
+                                <span class="chart-label">BMW M4</span>
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-bar bmw"></div>
+                                </div>
+                                <span class="chart-value">약 1.3억~</span>
+                            </div>
+                            <div class="chart-row">
+                                <span class="chart-label">포드 머스탱</span>
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-bar mustang"></div>
+                                </div>
+                                <span class="chart-value">약 6.5천~</span>
+                            </div>
+                            <div class="chart-row">
+                                <span class="chart-label">현대 아반떼 N</span>
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-bar avante"></div>
+                                </div>
+                                <span class="chart-value">약 3.8천~</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Section 3 -->
+                <article>
+                    <h2>스포츠카 실질 유지비 분석: 세금, 보험료, 소모품 가격의 실체</h2>
+                    <p>
+                        신차 혹은 중고로 스포츠카를 입수할 때 지불하는 명목 금액은 단지 시작일 뿐입니다. 일상 주행 시 뒤따르는 유류비, 자동차세, 자차보험 요금 및 전용 타이어 교체 주기 세팅 비용 등은 일반 승용차의 범주를 크게 일탈합니다. 특히 배기량이 큰 대배기량 머슬카의 경우 매년 부과되는 기본 자동차세만 수백만 원에 육박하며, 미드십이나 후륜구동 레이아웃 차량들은 후륜 타이어 마모 속도가 현저히 빨라 타이어 교체 비용 역시 정기적으로 발생합니다.
+                    </p>
+                    <p>
+                        주요 모델별 예상 취등록세와 연간 세금, 대략적인 유지 관리 요금 표준치를 아래 표로 정리하여 가장 직관적인 비교가 가능하도록 하였습니다.
+                    </p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>차종 모델군</th>
+                                <th>표준 신차 가격대</th>
+                                <th>예상 취등록세 (7퍼센트 기준)</th>
+                                <th>연간 예상 자동차세</th>
+                                <th>특이 소모품 교체 주기 및 비용</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>현대 아반떼 N</td>
+                                <td>38,000,000 원</td>
+                                <td>2,660,000 원</td>
+                                <td>약 520,000 원 (2.0리터 엔진 기준)</td>
+                                <td>기본 브레이크 패드 및 고성능 오일 포함 약 40만 원대</td>
+                            </tr>
+                            <tr>
+                                <td>포드 머스탱 V8 GT</td>
+                                <td>72,000,000 원</td>
+                                <td>5,040,000 원</td>
+                                <td>약 1,300,000 원 (5.0리터 대배기량)</td>
+                                <td>대형 후륜 타이어 세트 정밀 교체 시 약 150만 원선</td>
+                            </tr>
+                            <tr>
+                                <td>포르쉐 911 카레라</td>
+                                <td>180,000,000 원</td>
+                                <td>12,600,000 원</td>
+                                <td>약 780,000 원 (3.0리터 트윈터보)</td>
+                                <td>세라믹 컴포지트 전용 브레이크 패드 교체 시 수백만 원 상회</td>
+                            </tr>
+                            <tr>
+                                <td>페라리 로마</td>
+                                <td>320,000,000 원</td>
+                                <td>22,400,000 원</td>
+                                <td>약 1,000,000 원 (3.9리터 바이터보)</td>
+                                <td>정기 메인터넌스 및 특수 점검 비용 회당 평균 200만 원 이상</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p>
+                        유지 관리 상 부담을 크게 낮추는 다이렉트 할인 방법이나 연식에 따른 가치 보전 노하우를 알아두는 것도 지출을 줄이는 지름길입니다. 특히 대기업 제휴 할인 카드나 마일리지 측정 특약 제도, 주말 한정 운전 범위 설정법 등을 통해 정기 요금을 낮추고 혜택을 챙기는 절약 비법이 널리 공유되고 있습니다.
+                    </p>
+                </article>
+
+                <!-- Section 4 -->
+                <article>
+                    <h2>구매 경로 및 금융 설계: 할부, 리스, 렌트 장단점 비교</h2>
+                    <p>
+                        스포츠카를 매입할 때 자금 운용 방식은 구매자의 재무 환경에 따라 지대한 차이를 자아냅니다. 일시에 고액의 현금을 지불하여 인수하는 일시불 방식 외에도 개인 리스, 법인 운용리스, 장기렌터카 요금제, 저금리 유예할부 금융상품 등을 조합할 수 있습니다. 
+                    </p>
+                    <p>
+                        개인 사업자나 법인 업체의 경우 월 리스료를 비용 처리하여 세무상의 이익을 추구하는 컨설팅을 전문 파트너를 통해 수령하는 편이 유리합니다. 반면 순수 내돈내산으로 장기 보유하고자 하는 일반 급여 소득자의 경우, 이자율 손실이 큰 유예 금융상품보다는 가급적 선수금 비율을 높인 다이렉트 신용 할부나 캐시백 혜택을 부여하는 제휴 카드를 매칭하여 총 지불 금액을 낮추는 방향이 제일 낫습니다.
+                    </p>
+                    <p>
+                        네이버, 구글 검색창의 자동완성이나 쇼핑 탭의 가격 성지 좌표를 참조해 보면 특정 기간마다 파격적인 현금지원이나 사은품 증정, 제휴 상품권 증정 이벤트를 시행하는 곳이 실시간으로 변동됩니다. 신뢰할 수 없는 우회 업체를 피하고 공식 금융 딜러사의 고객센터 채널을 거쳐 명확한 계약 조건을 문서화하는 과정이 신규 가입 전 필수적으로 요구됩니다.
+                    </p>
+                </article>
+
+                <!-- Section 5 -->
+                <article>
+                    <h2>스포츠카 오너들의 생생한 내돈내산 경험담과 커뮤니티 트렌드</h2>
+                    <p>
+                        수많은 매니아들이 밀집한 대표 커뮤니티 보배드림이나 디시인사이드 차갤, 에펨코리아의 자동차 게시판 등에는 실감 나는 장기 운행 후기들이 다수 등재되어 있습니다. 이들의 공통적인 조언을 축약해 보면, 스포츠카는 주행 감성이라는 거대한 장점의 이면에 데일리 운행 시 시트의 단단함으로 인한 요통 유발, 낮은 지상고로 인한 요철과 과속방지턱 통과의 극심한 스트레스, 비좁은 적재 공간 등 실용성 측면에서의 명확한 단점과 한계가 존재한다고 언급합니다.
+                    </p>
+                    <p>
+                        따라서 세컨드 카 용도가 아닌 원카로 패밀리카 역할까지 억지로 병행하려 신청하는 경우, 얼마 못 가 감가 손실을 감수한 채 성지 장터에 매물로 재출품하는 불상사를 맞이하기 십상입니다. 사전에 토스나 카카오톡 등 핀테크 금융 플랫폼을 연계하여 나에게 부과될 합산 요율과 연간 자차 소요 비용을 정확히 모의 계산해 보는 습관이 중요합니다.
+                    </p>
+                    <p>
+                        최근에는 챗지피티(ChatGPT), 제미나이(Gemini) 같은 지능형 AI 에이전트 서비스를 통해 다이렉트 가격대 및 내 연봉 수준에 부합하는 매입 한도 컨설팅을 받는 유저들이 눈에 띄게 증가했습니다. 복잡한 수수료 구조를 벗어나 객관적인 재무 조언을 구한 뒤 적절한 스포츠카 모델 순위표를 확인하는 전략을 추천합니다.
+                    </p>
+                </article>
+
+                <!-- Section 6: Standard Trusted External Resources -->
+                <section class="external-links">
+                    <h3>신뢰할 수 있는 공인 외부 참고 정보</h3>
+                    <p>스포츠카의 구조적 분류와 세무 세법 및 차량 통계에 대한 투명한 정보는 아래의 정부 부처 및 공신력 있는 공식 백과 서비스를 통해 깊이 있게 확인하실 수 있습니다.</p>
+                    <ul>
+                        <li><a href="https://directpcheckl.koreahankang.com" target="_blank" rel="noopener">Reliabledone 자동차 세무 금융 안내센터</a>: 차종별 특수 목적 취등록세 및 리스 운용 비용의 감가상각 처리 기준 가이드 제공</li>
+                        <li><a href="https://namu.wiki/w/%EC%8A%A4%ED%8F%AC%EC%B8%A0%EC%B9%B4" target="_blank" rel="noopener">나무위키 스포츠카 백과사전</a>: 대형 스포츠카 카테고리의 역사, 구조적 변천사 및 전동화 트렌드 상세 서술</li>
+                        <li><a href="https://www.molit.go.kr" target="_blank" rel="noopener">국토교통부 공식 포털</a>: 정식 수입 통관 절차, 안전도 평가 데이터 및 국내 도로 안전 규정 준수 현황 열람</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- Right Side: Sticky Calculator & Consulting Form -->
+            <div class="sidebar-area">
+                <div class="sticky-sidebar">
+                    
+                    <!-- Form 1: Interactive Dynamic Calculator (Increases Dwell Time) -->
+                    <div class="calculator-card" id="calculator">
+                        <h3>실시간 월 납입금 모의 계산기</h3>
+                        <div class="form-group">
+                            <label for="carSelect">관심 모델군 선택</label>
+                            <select id="carSelect" class="form-control" onchange="calculateInstallment()">
+                                <option value="38000000">현대 아반떼 N (3,800만)</option>
+                                <option value="65000000">도요타 GR86 (가상 패키지 6,500만)</option>
+                                <option value="72000000">포드 머스탱 GT (7,200만)</option>
+                                <option value="130000000">BMW M4 쿠페 (1억 3,000만)</option>
+                                <option value="180000000" selected>포르쉐 911 카레라 (1억 8,000만)</option>
+                                <option value="320000000">페라리 로마 (3억 2,000만)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="installmentMonths">할부 및 이용 기간 (개월)</label>
+                            <select id="installmentMonths" class="form-control" onchange="calculateInstallment()">
+                                <option value="12">12개월 단기형</option>
+                                <option value="36">36개월 표준형</option>
+                                <option value="60" selected>60개월 여유형</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="prepayment">선수 선납금 비율 (퍼센트)</label>
+                            <select id="prepayment" class="form-control" onchange="calculateInstallment()">
+                                <option value="0">선수금 0% (무보증 무선납)</option>
+                                <option value="10">선수금 10% 납입</option>
+                                <option value="30" selected>선수금 30% 기본 세팅</option>
+                                <option value="50">선수금 50% 절반 선납</option>
+                            </select>
+                        </div>
+                        <div class="calc-result-area">
+                            <div>예상 취등록세 및 이율 합산 월 납입료</div>
+                            <div class="total-price" id="calcPrice">계산 중...</div>
+                        </div>
+                    </div>
+
+                    <!-- Form 2: Dynamic Lead Generation Form -->
+                    <div class="consulting-form" id="consulting">
+                        <h3>맞춤형 정밀 견적 신청</h3>
+                        <p>전문 금융 설계사가 제공하는 가장 저렴한곳 성지 딜러망 혜택 및 다이렉트 비교 견적서 상세 내역을 보내드립니다.</p>
+                        
+                        <div class="form-group">
+                            <label for="userName">신청자 성명</label>
+                            <input type="text" id="userName" class="form-control" placeholder="성함을 입력해주세요">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userPhone">연락처</label>
+                            <input type="tel" id="userPhone" class="form-control" placeholder="숫자만 입력 (예: 01012345678)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="consultType">희망 운용 형태</label>
+                            <select id="consultType" class="form-control">
+                                <option value="lease">개인/법인 무보증 리스 컨설팅</option>
+                                <option value="rent">비용처리 최적화 장기렌트 요금제</option>
+                                <option value="direct">다이렉트 최저가 할부 프로모션 비교</option>
+                            </select>
+                        </div>
+
+                        <div style="font-size: 0.8rem; color: #64748b; margin-top: 1rem; line-height: 1.4;">
+                            <input type="checkbox" id="agreePrivacy" checked> 개인정보 수집 및 제3자 제공에 동의하며, 실시간 비교견적 산출을 위한 문자 상담 전송에 합의합니다.
+                        </div>
+
+                        <button type="button" class="btn-submit" onclick="submitForm()">최저가 포트폴리오 신청하기</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </main>
-  </body>
-</html>
+
+  
+    <!-- Interactive JS Logic -->
+    <script>
+        function calculateInstallment() {
+            const carPrice = parseInt(document.getElementById('carSelect').value);
+            const months = parseInt(document.getElementById('installmentMonths').value);
+            const prepaymentPercent = parseInt(document.getElementById('prepayment').value);
+            
+            // Calculate base amount to divide (excluding prepayment)
+            const prePaidAmount = carPrice * (prepaymentPercent / 100);
+            const remainingAmount = carPrice - prePaidAmount;
+            
+            // Assume 5.5% annual interest rate divided by months
+            const annualRate = 0.055;
+            const monthlyRate = annualRate / 12;
+            
+            // Installment calculation formula
+            let monthlyPayment = 0;
+            if (monthlyRate === 0) {
+                monthlyPayment = remainingAmount / months;
+            } else {
+                monthlyPayment = (remainingAmount * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+            }
+            
+            // Format number to Korean Won
+            const formattedPrice = Math.round(monthlyPayment).toLocaleString() + " 원";
+            document.getElementById('calcPrice').innerText = formattedPrice;
+        }
+
+        function submitForm() {
+            const name = document.getElementById('userName').value.trim();
+            const phone = document.getElementById('userPhone').value.trim();
+            const agree = document.getElementById('agreePrivacy').checked;
+
+            if (!name) {
+                alert("상담을 진행할 성함을 기재해 주시기 바랍니다.");
+                return;
+            }
+            if (!phone || phone.length < 9) {
+                alert("비교 견적서를 전송할 연락처를 올바르게 작성해 주시기 바랍니다.");
+                return;
+            }
+            if (!agree) {
+                alert("개인정보 활용 동의 및 상담 전송 합의가 필수적입니다.");
+                return;
+            }
+
+            alert("성공적으로 맞춤형 포트폴리오 신청이 접수되었습니다. 담당 설계사가 상세 비교 견적표를 메신저로 즉시 송부해 드립니다.");
+            
+            // Clear fields after dynamic submit
+            document.getElementById('userName').value = "";
+            document.getElementById('userPhone').value = "";
+        }
+
+        // Initialize Calculator
+        window.onload = function() {
+            calculateInstallment();
+        }
+    </script>
+  
